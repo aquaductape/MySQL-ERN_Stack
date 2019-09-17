@@ -9,8 +9,8 @@ const router = express.Router();
 const User = require('../../models/User');
 const CustomError = require('../../helpers/CustomError');
 const validateUser = require('../../middleware/validateUser');
-
-router.post('/', validateUser(), async (req, res, next) => {
+// validateUser.signUp(),
+router.post('/', async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -39,6 +39,7 @@ router.post('/', validateUser(), async (req, res, next) => {
     const newUser = { name, email, password, avatar };
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);
+    newUser.date = 'now()';
 
     // returns user id
     const results = await User.add(newUser);
