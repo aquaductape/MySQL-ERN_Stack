@@ -9,8 +9,8 @@ const router = express.Router();
 const User = require('../../models/User');
 const CustomError = require('../../helpers/CustomError');
 const validateUser = require('../../middleware/validateUser');
-// validateUser.signUp(),
-router.post('/', async (req, res, next) => {
+
+router.post('/', validateUser.signUp(), async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
