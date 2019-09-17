@@ -5,23 +5,26 @@ const {
   parseKeysForSelect,
 } = require('./utils/parse');
 const createTable = require('./utils/createTable');
+const createTrigger = require('./utils/createTrigger');
 
 module.exports = class Schema {
   constructor(name, rows) {
     this.name = name;
     this.rows = rows;
-    this.columnsForInsert = parseKeysForInsert(rows);
     this.columnsForSelect = parseKeysForSelect(rows);
 
     createTable(name, rows);
+    createTrigger(name, 'INSERT', rows);
+    createTrigger(name, 'UPDATE', rows);
   }
 
   add(input) {
+    // should combine the functions into one and return an array?
+    const columns = parseKeysForInsert(input);
     const values = parseValuesForInsert(input);
-    console.log('TCL: Schema -> add -> values', values);
 
     const queryString = `
-      INSERT INTO ${this.name} (${this.columnsForInsert})
+      INSERT INTO ${this.name} (${columns})
       VALUES
       (${values});
     `;
