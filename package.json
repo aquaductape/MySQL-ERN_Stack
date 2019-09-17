@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "dropdb": "node config/dropDB"
   },
   "keywords": [],
   "author": "",
