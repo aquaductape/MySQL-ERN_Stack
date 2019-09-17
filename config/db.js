@@ -1,7 +1,5 @@
 const config = require('config');
 const mysql = require('mysql');
-// const User = require('../models/User');
-const tables = require('../models/tables');
 
 const connection = mysql.createConnection({
   host: config.get('db.host'),
@@ -19,13 +17,6 @@ connection.connect(async err => {
   }
 
   console.log('Connected to mysql 🐬 ');
-
-  try {
-    // Create tables unless they already exist
-    await tables.createUsers(connection);
-  } catch (err) {
-    console.log(err);
-  }
 });
 
 module.exports = connection;
