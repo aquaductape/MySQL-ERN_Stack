@@ -40,9 +40,27 @@ const parseKeysForSelect = obj => {
   return Object.keys(obj).filter(key => !reserved.includes(key));
 };
 
+const parseBlockEmptyStringForTrigger = obj => {
+  return Object.entries(obj)
+    .map(([key, value]) => {
+      if (value.match(/not\snull/gi)) {
+        return `
+      IF NEW.${key} = '' THEN
+        SET  NEW.${key} = NULL;
+      END IF;
+      `;
+      }
+
+      return null;
+    })
+    .filter(el => el)
+    .join('\n');
+};
+
 module.exports = {
   parseRows,
   parseValuesForInsert,
   parseKeysForInsert,
   parseKeysForSelect,
+  parseBlockEmptyStringForTrigger,
 };
