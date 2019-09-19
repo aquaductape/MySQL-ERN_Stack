@@ -6,31 +6,11 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 
 const User = require('../../models/User');
-const Profile = require('../../models/Profile');
-const auth = require('../../middleware/auth');
 const CustomError = require('../../helpers/CustomError');
 const validateUser = require('../../middleware/validateUser');
 
-router.get('/', auth, async (req, res, next) => {
-  try {
-    const id = req.user.id;
-
-    const profile = await Profile.findOne({ user_id: id });
-
-    if (!profile) {
-      return res
-        .status(400)
-        .json(new CustomError('There is no profile for this user'));
-    }
-
-    res.status(200).json(profile);
-  } catch (err) {
-    console.log('TCL: err', err);
-    res.status(400).json(new CustomError('Server Error'));
-  }
-});
-
-router.post('/', validateUser.login(), async (req, res, next) => {
+// @ user login
+router.post('/', validateUser.login, async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -64,8 +44,8 @@ router.post('/', validateUser.login(), async (req, res, next) => {
 
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
-      { expiresIn: 3600 },
+      config.get('jwt.secret'),
+      { expiresIn: config.get('jwt.expires') },
       (err, token) => {
         if (err) throw err;
 

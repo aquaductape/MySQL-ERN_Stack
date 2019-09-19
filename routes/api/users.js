@@ -10,7 +10,7 @@ const User = require('../../models/User');
 const CustomError = require('../../helpers/CustomError');
 const validateUser = require('../../middleware/validateUser');
 
-router.post('/', validateUser.signUp(), async (req, res, next) => {
+router.post('/', validateUser.signUp, async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -43,6 +43,7 @@ router.post('/', validateUser.signUp(), async (req, res, next) => {
 
     // returns user id
     const results = await User.add(newUser);
+    console.log('TCL: results', results);
 
     const payload = {
       user: {
@@ -52,8 +53,8 @@ router.post('/', validateUser.signUp(), async (req, res, next) => {
 
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
-      { expiresIn: 3600 },
+      config.get('jwt.secret'),
+      { expiresIn: config.get('jwt.expires') },
       (err, token) => {
         if (err) throw err;
 
