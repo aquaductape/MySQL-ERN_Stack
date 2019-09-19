@@ -2,8 +2,8 @@ const Schema = require('../schemas/index');
 
 const Social = new Schema('social', {
   id: 'INT AUTO_INCREMENT',
-  user_id: 'INT',
-  profile_id: 'INT',
+  user_id: 'INT NOT NULL',
+  profile_id: 'INT NOT NULL',
   youtube: 'VARCHAR(255)',
   twitter: 'VARCHAR(255)',
   facebook: 'VARCHAR(255)',
@@ -14,4 +14,4 @@ const Social = new Schema('social', {
   'FOREIGN KEY': '(profile_id) REFERENCES profile(id)',
 });
 
-module.exports = Socail;
+module.exports = Social;

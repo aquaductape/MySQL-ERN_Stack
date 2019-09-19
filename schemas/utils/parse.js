@@ -36,8 +36,36 @@ const parseValuesForInsert = obj => {
 };
 
 const parseKeysForSelect = obj => {
-  const reserved = ['PRIMARY KEY', 'FOREIGNE KEY'];
+  const reserved = ['PRIMARY KEY', 'FOREIGN KEY'];
   return Object.keys(obj).filter(key => !reserved.includes(key));
+};
+
+const parsePropertiesForSet = obj => {
+  return Object.entries(obj)
+    .map(([key, value]) => {
+      if (value === undefined) {
+        return null;
+      }
+
+      if (typeof value === 'number') {
+        return `${key}=${value}`;
+      }
+      return `${key}='${value}'`;
+    })
+    .filter(el => el !== null)
+    .join(', ');
+};
+
+const parsePropertiesForWhere = obj => {
+  return Object.entries(obj)
+    .map(([key, value]) => {
+      if (typeof value === 'number') {
+        return `${key}=${value}`;
+      }
+
+      return `${key}='${value}'`;
+    })
+    .join(' AND ');
 };
 
 const parseBlockEmptyStringForTrigger = obj => {
@@ -63,4 +91,6 @@ module.exports = {
   parseKeysForInsert,
   parseKeysForSelect,
   parseBlockEmptyStringForTrigger,
+  parsePropertiesForSet,
+  parsePropertiesForWhere,
 };

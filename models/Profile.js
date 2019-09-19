@@ -6,7 +6,7 @@ const Profile = new Schema('profile', {
   company: 'VARCHAR(100)',
   website: 'VARCHAR(100)',
   location: 'VARCHAR(100)',
-  status: 'VARCHAR(100)',
+  status: 'VARCHAR(100) NOT NULL',
   bio: 'TEXT',
   githubusername: 'VARCHAR(100)',
   date: 'DATETIME DEFAULT CURRENT_TIMESTAMP',
