@@ -13,6 +13,14 @@ module.exports = {
         .isEmpty(),
     ],
   ],
+  comment: [
+    auth,
+    [
+      check('text', 'Text is required')
+        .not()
+        .isEmpty(),
+    ],
+  ],
   user: {
     login: [
       check('email', 'Please enter a valid email').isEmail(),
