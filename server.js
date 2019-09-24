@@ -9,9 +9,6 @@ app.use(express.json({ extended: false }));
 
 app.listen(port, () => console.log(`Listening port ${port}... 👁️ `));
 
-// Start mysql db
-require('./config/db');
-
 // Define routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
