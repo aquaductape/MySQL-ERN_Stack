@@ -54,7 +54,7 @@ router.get('/me', auth, async (req, res, next) => {
 
     if (!profile) {
       return res
-        .status(400)
+        .status(404)
         .json(new CustomError('There is no profile for this user'));
     }
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
@@ -67,10 +67,16 @@ router.get('/me', auth, async (req, res, next) => {
         : [skills.skill]) || [];
 
     const education =
-      (await db.query('SELECT * FROM education WHERE ?', [{ user_id }])) || [];
+      (await db.query(
+        'SELECT * FROM education WHERE ? ORDER BY date_from DESC',
+        [{ user_id }]
+      )) || [];
 
     const experience =
-      (await db.query('SELECT * FROM experience WHERE ?', [{ user_id }])) || [];
+      (await db.query(
+        'SELECT * FROM experience WHERE ? ORDER BY date_from DESC',
+        [{ user_id }]
+      )) || [];
 
     const social =
       (await db.query('SELECT * FROM social WHERE ?', [{ user_id }])) || {};
@@ -82,7 +88,7 @@ router.get('/me', auth, async (req, res, next) => {
     res.status(200).json(profile);
   } catch (err) {
     console.log('TCL: err', err);
-    res.status(400).json(new CustomError('Server Error'));
+    res.status(500).json(new CustomError('Server Error'));
   }
 });
 
@@ -195,13 +201,17 @@ router.get('/', async (req, res) => {
     const profiles = await db.query('SELECT * FROM profile');
 
     if (!profiles) {
-      return res.status(400).json(new CustomError('No profiles found'));
+      return res.status(404).json(new CustomError('No profiles found'));
     }
 
     const skills = await db.query('SELECT * FROM skills');
     const social = await db.query('SELECT * FROM social');
-    const experience = await db.query('SELECT * FROM experience');
-    const education = await db.query('SELECT * FROM education');
+    const experience = await db.query(
+      'SELECT * FROM experience ORDER BY date_from DESC'
+    );
+    const education = await db.query(
+      'SELECT * FROM education ORDER BY date_from DESC'
+    );
     const users = await db.query('SELECT id, name, avatar FROM users');
 
     profiles.forEach(profile => {
@@ -258,7 +268,7 @@ router.get('/user/:user_id', async (req, res) => {
     ]);
 
     if (!profile) {
-      return res.status(400).json(new CustomError('Profile not found'));
+      return res.status(404).json(new CustomError('Profile not found'));
     }
 
     const user = await db.query('SELECT id, name, avatar FROM users WHERE ?', [
@@ -347,11 +357,11 @@ router.put('/experience', validate.experience, async (req, res, next) => {
     ]);
 
     if (!profile) {
-      return res.status(400).json(new CustomError('Profile not found'));
+      return res.status(404).json(new CustomError('Profile not found'));
     }
 
     profile.experience = await db.query(
-      'INSERT INTO experience SET ?; SELECT * FROM experience WHERE ?',
+      'INSERT INTO experience SET ?; SELECT * FROM experience WHERE ? ORDER BY date_from DESC',
       [experienceFields, { user_id }]
     );
 
@@ -386,9 +396,13 @@ router.delete('/experience/:exp_id', auth, async (req, res, next) => {
   }
 
   const exp_id = req.params.exp_id;
+  const user_id = req.user.id;
 
   try {
-    await db.query('DELETE FROM experience WHERE ?', [{ id: exp_id }]);
+    await db.query('DELETE FROM experience WHERE ? AND ?', [
+      { id: exp_id },
+      { user_id },
+    ]);
 
     return res.status(200).json({ msg: 'Experience removed' });
   } catch (err) {
@@ -439,11 +453,11 @@ router.put('/education', validate.education, async (req, res, next) => {
     ]);
 
     if (!profile) {
-      return res.status(400).json(new CustomError('Profile not found'));
+      return res.status(404).json(new CustomError('Profile not found'));
     }
 
     profile.education = await db.query(
-      'INSERT INTO education SET ?; SELECT * FROM education WHERE ?',
+      'INSERT INTO education SET ?; SELECT * FROM education WHERE ? ORDER BY date_from DESC',
       [educationFields, { user_id }]
     );
 
@@ -472,9 +486,13 @@ router.put('/education', validate.education, async (req, res, next) => {
 // @access Private
 router.delete('/education/:edu_id', auth, async (req, res, next) => {
   const edu_id = req.params.edu_id;
+  const user_id = req.user.id;
 
   try {
-    await db.query('DELETE FROM education WHERE ?', [{ id: exp_id }]);
+    await db.query('DELETE FROM education WHERE ? AND ?', [
+      { id: edu_id },
+      { user_id },
+    ]);
 
     return res.status(200).json({ msg: 'Education removed' });
   } catch (err) {
