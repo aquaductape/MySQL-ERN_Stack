@@ -62,7 +62,10 @@ class Database {
             resolve(rows);
           }
 
-          resolve(rows[0]);
+          if (rows.length) {
+            resolve(rows[0]);
+          }
+          resolve(rows);
         });
       });
     });
