@@ -5,12 +5,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 
-const User = require('../../models/User');
 const CustomError = require('../../helpers/CustomError');
-const validateUser = require('../../middleware/validateUser');
+const { user } = require('../../middleware/validate');
+const db = require('../../config/db');
 
 // @ user login
-router.post('/', validateUser.login, async (req, res, next) => {
+router.post('/', user.login, async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -24,7 +24,7 @@ router.post('/', validateUser.login, async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({ email });
+    const user = await db.query('SELECT * FROM users WHERE ?', [{ email }]);
 
     if (!user) {
       return res.status(400).json(new CustomError('Invalid email or password'));

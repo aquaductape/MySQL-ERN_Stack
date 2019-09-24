@@ -6,11 +6,11 @@ const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 const router = express.Router();
 
-const User = require('../../models/User');
 const CustomError = require('../../helpers/CustomError');
-const validateUser = require('../../middleware/validateUser');
+const { user } = require('../../middleware/validate');
+const db = require('../../config/db');
 
-router.post('/', validateUser.signUp, async (req, res, next) => {
+router.post('/', user.signUp, async (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -24,7 +24,9 @@ router.post('/', validateUser.signUp, async (req, res, next) => {
   }
 
   try {
-    const userExist = await User.findOne({ email });
+    const userExist = await db.query('SELECT * FROM users WHERE ?', [
+      { email },
+    ]);
 
     if (userExist) {
       return res.status(400).json(new CustomError('Email is already taken'));
@@ -39,11 +41,9 @@ router.post('/', validateUser.signUp, async (req, res, next) => {
     const newUser = { name, email, password, avatar };
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);
-    newUser.date = 'now()';
 
     // returns user id
-    const results = await User.add(newUser);
-    console.log('TCL: results', results);
+    const results = await db.query('INSERT INTO users SET ?', [newUser]);
 
     const payload = {
       user: {
