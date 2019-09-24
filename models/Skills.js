@@ -1,13 +1,14 @@
-const Schema = require('../schemas/index');
+const db = require('../config/db');
 
-const Skills = new Schema('skills', {
-  id: 'INT AUTO_INCREMENT',
-  user_id: 'INT',
-  profile_id: 'INT',
-  skill: 'VARCHAR(100) NOT NULL',
-  'PRIMARY KEY': '(id)',
-  'FOREIGN KEY': '(user_id) REFERENCES users(id)',
-  'FOREIGN KEY': '(profile_id) REFERENCES profile(id)',
-});
-
-module.exports = Skills;
+db.createTable(
+  'skills',
+  `
+  CREATE TABLE IF NOT EXISTS skills(
+    id INT AUTO_INCREMENT,
+    user_id INT,
+    skill VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  ); SHOW WARNINGS;
+`
+);
