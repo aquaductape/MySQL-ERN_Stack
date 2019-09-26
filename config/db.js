@@ -18,15 +18,15 @@ pool.getConnection((err, connection) => {
   }
   console.log('MySQL connected... 🐬 ');
   // Create tables
-  require('../models/User');
-  require('../models/Profile');
-  require('../models/Post');
-  require('../models/Education');
-  require('../models/Experience');
-  require('../models/Likes');
-  require('../models/Comments');
-  require('../models/Social');
-  require('../models/Skills');
+  require('../server/models/User');
+  require('../server/models/Profile');
+  require('../server/models/Post');
+  require('../server/models/Education');
+  require('../server/models/Experience');
+  require('../server/models/Likes');
+  require('../server/models/Comments');
+  require('../server/models/Social');
+  require('../server/models/Skills');
   connection.release();
 });
 

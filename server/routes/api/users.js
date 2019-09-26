@@ -8,7 +8,7 @@ const router = express.Router();
 
 const CustomError = require('../../helpers/CustomError');
 const { user } = require('../../middleware/validate');
-const db = require('../../config/db');
+const db = require('../../../config/db');
 
 router.post('/', user.signUp, async (req, res, next) => {
   const errors = validationResult(req);

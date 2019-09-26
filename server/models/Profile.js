@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 db.createTable(
   'profile',
@@ -13,6 +13,7 @@ db.createTable(
     bio TEXT,
     githubusername VARCHAR(100),
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    # deleted_at NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   ); SHOW WARNINGS;

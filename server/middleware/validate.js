@@ -1,6 +1,45 @@
 const { check } = require('express-validator');
 const auth = require('./auth');
 
+const makeCommaSeparatedString = (arr, useOxfordComma) => {
+  const listStart = arr.slice(0, -1).join(', ');
+  const listEnd = arr.slice(-1);
+  const conjunction =
+    arr.length <= 1
+      ? ''
+      : useOxfordComma && arr.length > 2
+      ? ', and a'
+      : ' and a ';
+
+  return [listStart, listEnd].join(conjunction);
+};
+
+const validatePassword = password => {
+  const form = { msg: [], hasError: false };
+  if (!password.match(/[$-/:-?{-~!"^_`[\]]/g)) {
+    form.msg.push('symbol');
+    form.hasError = true;
+  }
+
+  if (!password.match(/\d/g)) {
+    form.msg.push('number');
+    form.hasError = true;
+  }
+
+  if (!password.match(/[A-Z]/g)) {
+    form.msg.push('uppercase letter');
+    form.hasError = true;
+  }
+  if (!password.match(/[a-z]/g)) {
+    form.msg.push('lowercase letter');
+    form.hasError = true;
+  }
+
+  const msg = makeCommaSeparatedString(form.msg);
+
+  return form.hasError ? msg : '';
+};
+
 module.exports = {
   profile: [
     auth,
@@ -31,10 +70,17 @@ module.exports = {
         .not()
         .isEmpty(),
       check('email', 'Please enter a valid email').isEmail(),
-      check(
-        'password',
-        'Please enter a password with 6 or more characters'
-      ).isLength({ min: 6 }),
+      check('password', 'Please enter a password with 6 or more characters')
+        .custom(password => {
+          let msg = validatePassword(password);
+          if (msg) {
+            msg = 'Password must include a ' + msg;
+            throw new Error(msg);
+          }
+
+          return true;
+        })
+        .isLength({ min: 6 }),
     ],
   },
   education: [

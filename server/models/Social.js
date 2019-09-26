@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 db.createTable(
   'social',
@@ -11,6 +11,7 @@ db.createTable(
     facebook VARCHAR(255),
     linkedin VARCHAR(255),
     instagram VARCHAR(255),
+    # deleted_at NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   ); SHOW WARNINGS;

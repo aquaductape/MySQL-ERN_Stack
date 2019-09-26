@@ -7,7 +7,7 @@ const { validationResult } = require('express-validator');
 
 const CustomError = require('../../helpers/CustomError');
 const { user } = require('../../middleware/validate');
-const db = require('../../config/db');
+const db = require('../../../config/db');
 
 // @ user login
 router.post('/', user.login, async (req, res, next) => {

@@ -7,7 +7,7 @@ const { validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const CustomError = require('../../helpers/CustomError');
 const validate = require('../../middleware/validate');
-const db = require('../../config/db');
+const db = require('../../../config/db');
 // const Post = require('../../models/Post');
 
 // @route POST api/posts

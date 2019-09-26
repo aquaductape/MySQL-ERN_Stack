@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 db.createTable(
   'experience',
@@ -13,6 +13,7 @@ db.createTable(
     date_to DATE,
     current TINYINT(1) DEFAULT 0,
     description TEXT,
+    # deleted_at NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)  
   ); SHOW WARNINGS;
