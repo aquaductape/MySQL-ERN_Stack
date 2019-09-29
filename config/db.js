@@ -1,6 +1,16 @@
 const config = require('config');
 const mysql = require('mysql');
 
+const User = require('../server/models/User');
+const Profile = require('../server/models/Profile');
+const Skills = require('../server/models/Skills');
+const Social = require('../server/models/Social');
+const Experience = require('../server/models/Experience');
+const Education = require('../server/models/Education');
+const Comments = require('../server/models/Comments');
+const Likes = require('../server/models/Likes');
+const Post = require('../server/models/Post');
+
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: config.get('db.host'),
@@ -18,15 +28,16 @@ pool.getConnection((err, connection) => {
   }
   console.log('MySQL connected... 🐬 ');
   // Create tables
-  require('../server/models/User');
-  require('../server/models/Profile');
-  require('../server/models/Post');
-  require('../server/models/Education');
-  require('../server/models/Experience');
-  require('../server/models/Likes');
-  require('../server/models/Comments');
-  require('../server/models/Social');
-  require('../server/models/Skills');
+  createTable(connection, ...User);
+  createTable(connection, ...Profile);
+  createTable(connection, ...Skills);
+  createTable(connection, ...Social);
+  createTable(connection, ...Education);
+  createTable(connection, ...Experience);
+  createTable(connection, ...Post);
+  createTable(connection, ...Likes);
+  createTable(connection, ...Comments);
+
   connection.release();
 });
 
@@ -71,31 +82,6 @@ class Database {
     });
   }
 
-  createTable(name, sql, args) {
-    const tableExist = rows => {
-      for (let row of rows) {
-        if (row.Code === 1050) return true;
-        if (Array.isArray(row)) return tableExist(row);
-      }
-    };
-    this.pool.getConnection((err, connection) => {
-      if (err) return reject(err);
-
-      connection.query(sql, args, (err, rows) => {
-        // console.log('TCL: Database -> createTable -> rows', rows);
-        // console.log('ran');
-        connection.release();
-        if (err) {
-          console.log(err);
-          throw err;
-        }
-        if (!tableExist(rows)) {
-          console.log(`Created ${name} TABLE`);
-        }
-      });
-    });
-  }
-
   createTrigger() {
     // Mysql: ...if you use the mysql program to define a trigger that executes multiple statements, it is necessary to redefine the mysql statement DELIMITER so that you can use the ; statement DELIMITER within the trigger definition.
 
@@ -109,6 +95,27 @@ class Database {
         END;
         `;
   }
+}
+
+function createTable(connection, name, sql, args) {
+  const tableExist = rows => {
+    for (let row of rows) {
+      if (row.Code === 1050) return true;
+      if (Array.isArray(row)) return tableExist(row);
+    }
+  };
+  connection.query(sql, args, (err, rows) => {
+    // console.log('TCL: Database -> createTable -> rows', rows);
+    // console.log('ran');
+    // connection.release();
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    if (!tableExist(rows)) {
+      console.log(`Created ${name} TABLE`);
+    }
+  });
 }
 
 module.exports = db = new Database(pool);
