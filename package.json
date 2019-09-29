@@ -6,8 +6,8 @@
   "scripts": {
     "client": "npm start --prefix client",
     "server": "nodemon server/server.js",
-    "dropDB": "node config/dropDB",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dropdb": "node config/dropDB",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

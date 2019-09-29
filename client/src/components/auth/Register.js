@@ -1,11 +1,17 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import { validateEmail, validatePassword } from '../../utils/validate';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    name: 'Caleb',
-    email: 'caliber@gmail.com',
-    password: '',
-    password2: '',
+    name: 'Joe Biden',
+    email: 'joe@gmail.com',
+    password: '!Aabc123',
+    password2: '!Aabc123',
   });
 
   const onInput = e => {
@@ -15,13 +21,44 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (password !== password2) {
-      console.log("Passwords don't match");
-    } else {
-      console.log(formData);
+    const form = { hasError: false };
+    if (!validateEmail(email)) {
+      setAlert('Please enter a valid email', 'danger', 3000);
+      form.hasError = true;
     }
-    console.log(e);
+
+    if (!name.trim()) {
+      setAlert('Name is required', 'danger', 3000);
+      form.hasError = true;
+    }
+
+    if (password.trim().length < 6) {
+      setAlert(
+        'Please enter a password with 6 or more characters',
+        'danger',
+        3000
+      );
+      form.hasError = true;
+    } else {
+      let msg = validatePassword(password);
+      if (msg) {
+        msg = 'Password must include a ' + msg;
+        setAlert(msg, 'danger', 3000);
+      }
+    }
+
+    if (password !== password2) {
+      setAlert("Passwords don't match", 'danger', 3000);
+      form.hasError = true;
+    }
+    if (!form.hasError) {
+      register({ name, email, password });
+    }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   const { name, email, password, password2 } = formData;
   return (
@@ -30,7 +67,7 @@ const Register = () => {
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account
       </p>
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" onSubmit={onSubmit} noValidate>
         <div className="form-group">
           <input
             type="text"
@@ -61,7 +98,6 @@ const Register = () => {
             name="password"
             value={password}
             onChange={onInput}
-            minLength="6"
           />
         </div>
         <div className="form-group">
@@ -71,16 +107,28 @@ const Register = () => {
             name="password2"
             value={password2}
             onChange={onInput}
-            minLength="6"
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="login.html">Sign In</a>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </Fragment>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(
+  mapStateToProps,
+  { setAlert, register }
+)(Register);
