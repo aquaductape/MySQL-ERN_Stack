@@ -8,24 +8,7 @@ const auth = require('../../middleware/auth');
 const CustomError = require('../../helpers/CustomError');
 const validate = require('../../middleware/validate');
 const db = require('../../../config/db');
-
-const selectSocial = [
-  'youtube',
-  'twitter',
-  'facebook',
-  'linkedin',
-  'instagram',
-];
-
-const selectProfile = [
-  'company',
-  'website',
-  'location',
-  'status',
-  'bio',
-  'githubusername',
-  'date',
-];
+const select = require('../../helpers/select');
 
 const cleanJson = obj => {
   Object.keys(obj).forEach(key => {
@@ -48,7 +31,8 @@ router.get('/me', auth, async (req, res, next) => {
   try {
     const user_id = req.user.id;
 
-    const profile = await db.query('SELECT * FROM profile WHERE profile.?', [
+    const profile = await db.query('SELECT ?? FROM profile WHERE profile.?', [
+      select.profile,
       { user_id },
     ]);
 
@@ -68,18 +52,21 @@ router.get('/me', auth, async (req, res, next) => {
 
     const education =
       (await db.query(
-        'SELECT * FROM education WHERE ? ORDER BY date_from DESC',
-        [{ user_id }]
+        'SELECT ?? FROM education WHERE ? ORDER BY date_from DESC',
+        [select.education, { user_id }]
       )) || [];
 
     const experience =
       (await db.query(
-        'SELECT * FROM experience WHERE ? ORDER BY date_from DESC',
-        [{ user_id }]
+        'SELECT ?? FROM experience WHERE ? ORDER BY date_from DESC',
+        [select.experience, { user_id }]
       )) || [];
 
     const social =
-      (await db.query('SELECT * FROM social WHERE ?', [{ user_id }])) || {};
+      (await db.query('SELECT ?? FROM social WHERE ?', [
+        select.social,
+        { user_id },
+      ])) || {};
 
     profile.education = Array.isArray(education) ? education : [education];
     profile.experience = Array.isArray(experience) ? experience : [experience];
@@ -151,7 +138,7 @@ router.post('/', validate.profile, async (req, res) => {
     }
     const newProfile = await db.query(
       'REPLACE INTO profile SET ?; SELECT ?? FROM profile WHERE ?',
-      [profileFields, selectProfile, { user_id }]
+      [profileFields, select.profile, { user_id }]
     );
 
     const skillsArr = skills.split(/\,\s*/).filter(skill => skill);
@@ -180,7 +167,7 @@ router.post('/', validate.profile, async (req, res) => {
 
     newProfile.social = await db.query(
       'REPLACE INTO social SET ?; SELECT ?? FROM social WHERE ?',
-      [social, selectSocial, { user_id }]
+      [social, select.social, { user_id }]
     );
 
     newProfile.social = newProfile.social || {};
@@ -198,19 +185,21 @@ router.post('/', validate.profile, async (req, res) => {
 // @access Public
 router.get('/', async (req, res) => {
   try {
-    const profiles = await db.query('SELECT * FROM profile');
+    const profiles = await db.query('SELECT ?? FROM profile', [select.profile]);
 
     if (!profiles) {
       return res.status(404).json(new CustomError('No profiles found'));
     }
 
-    const skills = await db.query('SELECT * FROM skills');
-    const social = await db.query('SELECT * FROM social');
+    const skills = await db.query('SELECT ?? FROM skills', [select.skills]);
+    const social = await db.query('SELECT ?? FROM social', [select.social]);
     const experience = await db.query(
-      'SELECT * FROM experience ORDER BY date_from DESC'
+      'SELECT ?? FROM experience ORDER BY date_from DESC',
+      [select.experience]
     );
     const education = await db.query(
-      'SELECT * FROM education ORDER BY date_from DESC'
+      'SELECT ?? FROM education ORDER BY date_from DESC',
+      [select.education]
     );
     const users = await db.query('SELECT id, name, avatar FROM users');
 
@@ -224,27 +213,23 @@ router.get('/', async (req, res) => {
 
       const socialResult = social.filter(link => link.user_id === user_id)[0];
 
-      profile.experience = experience.filter(exp => {
+      profile.experience = experience.forEach(exp => {
         // find user_id and then hide it
         if (exp.user_id === user_id) {
           exp.user_id = null;
-          return true;
         }
       });
 
-      profile.education = education.filter(edu => {
+      profile.education = education.forEach(edu => {
         // find user_id and then hide it
         if (edu.user_id === user_id) {
           edu.user_id = null;
-          return true;
         }
       });
 
-      socialResult.id = null;
       socialResult.user_id = null;
 
       profile.social = socialResult;
-      profile.id = null;
       profile.user_id = null;
     });
 
@@ -263,7 +248,7 @@ router.get('/user/:user_id', async (req, res) => {
   try {
     const user_id = req.params.user_id;
     const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
-      selectProfile,
+      select.profile,
       { user_id },
     ]);
 
@@ -278,7 +263,7 @@ router.get('/user/:user_id', async (req, res) => {
       { user_id },
     ]);
     const social = await db.query('SELECT ?? FROM social WHERE ?', [
-      selectSocial,
+      select.social,
       { user_id },
     ]);
 
@@ -352,7 +337,8 @@ router.put('/experience', validate.experience, async (req, res, next) => {
   experienceFields.current = current === null ? 0 : current;
 
   try {
-    const profile = await db.query('SELECT * FROM profile WHERE ?', [
+    const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
+      select.profile,
       { user_id },
     ]);
 
@@ -361,14 +347,15 @@ router.put('/experience', validate.experience, async (req, res, next) => {
     }
 
     profile.experience = await db.query(
-      'INSERT INTO experience SET ?; SELECT * FROM experience WHERE ? ORDER BY date_from DESC',
-      [experienceFields, { user_id }]
+      'INSERT INTO experience SET ?; SELECT ?? FROM experience WHERE ? ORDER BY date_from DESC',
+      [experienceFields, select.experience, { user_id }]
     );
 
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
       { user_id },
     ]);
-    const social = await db.query('SELECT * FROM social WHERE ?', [
+    const social = await db.query('SELECT ?? FROM social WHERE ?', [
+      select.social,
       { user_id },
     ]);
 
@@ -448,7 +435,8 @@ router.put('/education', validate.education, async (req, res, next) => {
   educationFields.current = current === null ? 0 : current;
 
   try {
-    const profile = await db.query('SELECT * FROM profile WHERE ?', [
+    const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
+      select.profile,
       { user_id },
     ]);
 
@@ -457,14 +445,15 @@ router.put('/education', validate.education, async (req, res, next) => {
     }
 
     profile.education = await db.query(
-      'INSERT INTO education SET ?; SELECT * FROM education WHERE ? ORDER BY date_from DESC',
-      [educationFields, { user_id }]
+      'INSERT INTO education SET ?; SELECT ?? FROM education WHERE ? ORDER BY date_from DESC',
+      [educationFields, select.education, { user_id }]
     );
 
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
       { user_id },
     ]);
-    const social = await db.query('SELECT * FROM social WHERE ?', [
+    const social = await db.query('SELECT ?? FROM social WHERE ?', [
+      select.social,
       { user_id },
     ]);
 

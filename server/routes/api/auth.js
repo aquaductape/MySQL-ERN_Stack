@@ -8,6 +8,8 @@ const { validationResult } = require('express-validator');
 const CustomError = require('../../helpers/CustomError');
 const { user } = require('../../middleware/validate');
 const db = require('../../../config/db');
+const auth = require('../../middleware/auth');
+const select = require('../../helpers/select');
 
 // @ user login
 router.post('/', user.login, async (req, res, next) => {
@@ -58,4 +60,22 @@ router.post('/', user.login, async (req, res, next) => {
   }
 });
 
+router.get('/', auth, async (req, res, next) => {
+  const id = req.user.id;
+  try {
+    const user = await db.query('SELECT ?? FROM users WHERE ?', [
+      select.user,
+      { id },
+    ]);
+
+    if (!user) {
+      return res.status(404).json(new CustomError('User not found'));
+    }
+
+    return res.status(200).json(user);
+  } catch (err) {
+    console.log('TCL: err', err);
+    return res.status(500).json(new CustomError('Server Error'));
+  }
+});
 module.exports = router;

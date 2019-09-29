@@ -1,6 +1,4 @@
-const db = require('../../config/db');
-
-db.createTable(
+module.exports = [
   'social',
   `
   CREATE TABLE IF NOT EXISTS social(
@@ -11,9 +9,9 @@ db.createTable(
     facebook VARCHAR(255),
     linkedin VARCHAR(255),
     instagram VARCHAR(255),
-    # deleted_at NULL,
+    deleted_at DATETIME DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   ); SHOW WARNINGS;
-`
-);
+`,
+];

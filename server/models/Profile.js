@@ -1,6 +1,4 @@
-const db = require('../../config/db');
-
-db.createTable(
+module.exports = [
   'profile',
   `
   CREATE TABLE IF NOT EXISTS profile(
@@ -13,9 +11,9 @@ db.createTable(
     bio TEXT,
     githubusername VARCHAR(100),
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    # deleted_at NULL,
+    deleted_at DATETIME DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   ); SHOW WARNINGS;
-`
-);
+`,
+];

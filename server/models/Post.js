@@ -1,6 +1,4 @@
-const db = require('../../config/db');
-
-db.createTable(
+module.exports = [
   'posts',
   `
   CREATE TABLE IF NOT EXISTS posts(
@@ -10,9 +8,9 @@ db.createTable(
     name VARCHAR(100),
     avatar VARCHAR(255),
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    # deleted_at NULL,
+    deleted_at DATETIME DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL  
   ); SHOW WARNINGS;
-`
-);
+`,
+];

@@ -1,5 +1,3 @@
-const db = require('../../config/db');
-
 /**Strategies to save data
  *
  * active - Type boolean. When pulling data check if it's false.
@@ -15,7 +13,7 @@ const db = require('../../config/db');
  * Users accidently or regrettably delete data
  * Bad guys who gained users' account may delete data
  */
-db.createTable(
+module.exports = [
   'users',
   `
   CREATE TABLE IF NOT EXISTS users(
@@ -26,8 +24,8 @@ db.createTable(
     avatar VARCHAR(255),
     confirmed TINYINT(1) DEFAULT 0,
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    # deleted_at NULL,
+    deleted_at DATETIME DEFAULT NULL,
     PRIMARY KEY (id)
   ); SHOW WARNINGS;
-`
-);
+`,
+];

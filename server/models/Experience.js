@@ -1,6 +1,4 @@
-const db = require('../../config/db');
-
-db.createTable(
+module.exports = [
   'experience',
   `
   CREATE TABLE IF NOT EXISTS experience(
@@ -13,9 +11,9 @@ db.createTable(
     date_to DATE,
     current TINYINT(1) DEFAULT 0,
     description TEXT,
-    # deleted_at NULL,
+    deleted_at DATETIME DEFAULT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)  
   ); SHOW WARNINGS;
-`
-);
+`,
+];

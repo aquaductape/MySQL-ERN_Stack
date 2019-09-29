@@ -8,7 +8,7 @@ const auth = require('../../middleware/auth');
 const CustomError = require('../../helpers/CustomError');
 const validate = require('../../middleware/validate');
 const db = require('../../../config/db');
-// const Post = require('../../models/Post');
+const select = require('../../helpers/select');
 
 // @route POST api/posts
 // @desc  Add post
@@ -36,7 +36,8 @@ router.post('/', validate.post, async (req, res, next) => {
     };
 
     const results = await db.query('INSERT INTO posts SET ?', [newPost]);
-    const post = await db.query('SELECT * FROM posts WHERE ?', [
+    const post = await db.query('SELECT ?? FROM posts WHERE ?', [
+      select.posts,
       { id: results.insertId },
     ]);
     post.likes = [];
@@ -69,15 +70,20 @@ router.delete('/:post_id', auth, async (req, res, next) => {
 // @access Private
 router.get('/', auth, async (req, res, next) => {
   try {
-    const posts = await db.query('SELECT * FROM posts ORDER BY date DESC');
+    const posts = await db.query('SELECT ?? FROM posts ORDER BY date DESC', [
+      select.posts,
+    ]);
 
     if (!posts) {
       return res.status(404).json(new CustomError('No posts'));
     }
 
-    const likes = await db.query('SELECT * FROM likes ORDER BY date DESC');
+    const likes = await db.query('SELECT ?? FROM likes ORDER BY date DESC', [
+      select.likes,
+    ]);
     const comments = await db.query(
-      'SELECT * FROM comments ORDER BY date DESC'
+      'SELECT ?? FROM comments ORDER BY date DESC',
+      [select.comments]
     );
 
     posts.forEach(post => {
@@ -99,15 +105,20 @@ router.get('/', auth, async (req, res, next) => {
 // @access Private
 router.get('/', auth, async (req, res, next) => {
   try {
-    const posts = await db.query('SELECT * FROM posts ORDER BY date DESC');
+    const posts = await db.query('SELECT ?? FROM posts ORDER BY date DESC', [
+      select.posts,
+    ]);
 
     if (!posts) {
       return res.status(404).json(new CustomError('No posts'));
     }
 
-    const likes = await db.query('SELECT * FROM likes ORDER BY date DESC');
+    const likes = await db.query('SELECT ?? FROM likes ORDER BY date DESC', [
+      select.likes,
+    ]);
     const comments = await db.query(
-      'SELECT * FROM comments ORDER BY date DESC'
+      'SELECT ?? FROM comments ORDER BY date DESC',
+      [select.comments]
     );
 
     posts.forEach(post => {
@@ -132,7 +143,10 @@ router.put('/like/:id', auth, async (req, res, next) => {
   const user_id = req.user.id;
   const likeFields = { post_id: id, user_id };
   try {
-    const post = await db.query('SELECT * FROM posts WHERE ?', [{ id }]);
+    const post = await db.query('SELECT ?? FROM posts WHERE ?', [
+      select.posts,
+      { id },
+    ]);
     if (!post) {
       return res.status(404).json(new CustomError('Post not Found'));
     }
@@ -170,7 +184,8 @@ router.put('/unlike/:id', auth, async (req, res, next) => {
       return res.status(404).json(new CustomError('Post not Found'));
     }
 
-    const likeExist = await db.query('SELECT * FROM likes WHERE ?', [
+    const likeExist = await db.query('SELECT ?? FROM likes WHERE ?', [
+      select.likes,
       { post_id: id },
     ]);
 
@@ -216,7 +231,10 @@ router.put('/comment/:id', validate.comment, async (req, res, next) => {
   const commentField = { text, user_id };
 
   try {
-    const post = await db.query('SELECT * FROM posts WHERE ?', [{ id }]);
+    const post = await db.query('SELECT ?? FROM posts WHERE ?', [
+      select.posts,
+      { id },
+    ]);
     if (!post) {
       return res.status(404).json(new CustomError('Post not Found'));
     }
@@ -242,7 +260,8 @@ router.delete('/comment/:post_id/:comment_id', auth, async (req, res, next) => {
   const comment_id = req.params.comment_id;
 
   try {
-    const post = await db.query('SELECT * FROM posts WHERE ?', [
+    const post = await db.query('SELECT ?? FROM posts WHERE ?', [
+      select.posts,
       { id: post_id },
     ]);
     if (!post) {
