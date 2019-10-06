@@ -10,9 +10,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: 'Joe Biden',
     email: 'joe@gmail.com',
-    password: '!Aabc123',
-    password2: '!Aabc123',
+    password: '123456Aa!',
+    password2: '123456Aa!'
   });
+  const { name, email, password, password2 } = formData;
 
   const onInput = e => {
     const name = e.target.name;
@@ -60,7 +61,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
-  const { name, email, password, password2 } = formData;
   return (
     <Fragment>
       <h1 className="large text-primary">Sign Up</h1>
@@ -121,11 +121,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(
