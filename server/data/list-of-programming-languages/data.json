@@ -1,0 +1,2152 @@
+{
+  "@context": "http://schema.org",
+  "@type": ["ItemList", "CreativeWork"],
+  "inLanguage": "English",
+  "description": "The aim of this list of programming languages is to include all notable programming languages in existence, both those in current use and historical ones, in alphabetical order. Dialects of BASIC, esoteric programming languages, and markup languages are not included. \n",
+  "version": "2.0.2",
+  "dateModified": "2019-10-02T23:44:36.313Z",
+  "isBasedOnUrl": "http://en.wikipedia.org/wiki/List_of_programming_languages",
+  "itemListOrder": "schema:ItemListOrderAscending",
+  "numberOfItems": 713,
+  "itemListElement": [
+    {
+      "value": "@Formula"
+    },
+    {
+      "value": "1C:Enterprise programming language"
+    },
+    {
+      "value": "A-0 System"
+    },
+    {
+      "value": "A# .NET"
+    },
+    {
+      "value": "A+"
+    },
+    {
+      "value": "A++"
+    },
+    {
+      "value": "ABAP"
+    },
+    {
+      "value": "ABC"
+    },
+    {
+      "value": "ABC ALGOL"
+    },
+    {
+      "value": "ACC"
+    },
+    {
+      "value": "Accent"
+    },
+    {
+      "value": "Ace DASL (Distributed Application Specification Language)"
+    },
+    {
+      "value": "Action!"
+    },
+    {
+      "value": "ActionScript"
+    },
+    {
+      "value": "Active Server Pages"
+    },
+    {
+      "value": "Actor"
+    },
+    {
+      "value": "Ada"
+    },
+    {
+      "value": "Adenine"
+    },
+    {
+      "value": "Agda"
+    },
+    {
+      "value": "Agilent VEE"
+    },
+    {
+      "value": "Agora"
+    },
+    {
+      "value": "AIMMS"
+    },
+    {
+      "value": "Aldor"
+    },
+    {
+      "value": "Alef"
+    },
+    {
+      "value": "ALF"
+    },
+    {
+      "value": "ALGOL 58"
+    },
+    {
+      "value": "ALGOL 60"
+    },
+    {
+      "value": "ALGOL 68"
+    },
+    {
+      "value": "ALGOL W"
+    },
+    {
+      "value": "Alice"
+    },
+    {
+      "value": "Alma-0"
+    },
+    {
+      "value": "AmbientTalk"
+    },
+    {
+      "value": "Amiga E"
+    },
+    {
+      "value": "AMOS"
+    },
+    {
+      "value": "AMPL"
+    },
+    {
+      "value": "AngelScript"
+    },
+    {
+      "value": "Apex"
+    },
+    {
+      "value": "APL"
+    },
+    {
+      "value": "App Inventor for Android's visual block language"
+    },
+    {
+      "value": "AppleScript"
+    },
+    {
+      "value": "APT"
+    },
+    {
+      "value": "Arc"
+    },
+    {
+      "value": "ARexx"
+    },
+    {
+      "value": "Argus"
+    },
+    {
+      "value": "Assembly language"
+    },
+    {
+      "value": "AutoHotkey"
+    },
+    {
+      "value": "AutoLISP / Visual LISP"
+    },
+    {
+      "value": "Averest"
+    },
+    {
+      "value": "AWK"
+    },
+    {
+      "value": "Axum"
+    },
+    {
+      "value": "B"
+    },
+    {
+      "value": "Babbage"
+    },
+    {
+      "value": "Ballerina"
+    },
+    {
+      "value": "bash"
+    },
+    {
+      "value": "Bash"
+    },
+    {
+      "value": "BASIC"
+    },
+    {
+      "value": "Batch file (Windows/MS-DOS)"
+    },
+    {
+      "value": "bc"
+    },
+    {
+      "value": "BCPL"
+    },
+    {
+      "value": "BeanShell"
+    },
+    {
+      "value": "Bertrand"
+    },
+    {
+      "value": "BETA"
+    },
+    {
+      "value": "BLISS"
+    },
+    {
+      "value": "Blockly"
+    },
+    {
+      "value": "BlooP"
+    },
+    {
+      "value": "Boo"
+    },
+    {
+      "value": "Boomerang"
+    },
+    {
+      "value": "Bourne shell"
+    },
+    {
+      "value": "C"
+    },
+    {
+      "value": "C Shell (csh)"
+    },
+    {
+      "value": "C--"
+    },
+    {
+      "value": "C*"
+    },
+    {
+      "value": "C/AL"
+    },
+    {
+      "value": "C#"
+    },
+    {
+      "value": "C++"
+    },
+    {
+      "value": "Caché ObjectScript"
+    },
+    {
+      "value": "Caml"
+    },
+    {
+      "value": "Cayenne"
+    },
+    {
+      "value": "CDuce"
+    },
+    {
+      "value": "Cecil"
+    },
+    {
+      "value": "Cesil"
+    },
+    {
+      "value": "Céu"
+    },
+    {
+      "value": "Ceylon"
+    },
+    {
+      "value": "CFEngine"
+    },
+    {
+      "value": "Cg"
+    },
+    {
+      "value": "Ch"
+    },
+    {
+      "value": "Chapel"
+    },
+    {
+      "value": "Charity"
+    },
+    {
+      "value": "Charm"
+    },
+    {
+      "value": "CHILL"
+    },
+    {
+      "value": "CHIP-8"
+    },
+    {
+      "value": "chomski"
+    },
+    {
+      "value": "ChucK"
+    },
+    {
+      "value": "Cilk"
+    },
+    {
+      "value": "Citrine"
+    },
+    {
+      "value": "CL"
+    },
+    {
+      "value": "Claire"
+    },
+    {
+      "value": "Clarion"
+    },
+    {
+      "value": "Clean"
+    },
+    {
+      "value": "Clipper"
+    },
+    {
+      "value": "CLIPS"
+    },
+    {
+      "value": "CLIST"
+    },
+    {
+      "value": "Clojure"
+    },
+    {
+      "value": "CLU"
+    },
+    {
+      "value": "CMS EXEC"
+    },
+    {
+      "value": "CMS-2"
+    },
+    {
+      "value": "COBOL"
+    },
+    {
+      "value": "CobolScript"
+    },
+    {
+      "value": "Cobra"
+    },
+    {
+      "value": "CoffeeScript"
+    },
+    {
+      "value": "ColdFusion"
+    },
+    {
+      "value": "COMAL"
+    },
+    {
+      "value": "Combined Programming Language"
+    },
+    {
+      "value": "COMIT"
+    },
+    {
+      "value": "Common Intermediate Language"
+    },
+    {
+      "value": "Common Lisp"
+    },
+    {
+      "value": "COMPASS"
+    },
+    {
+      "value": "Component Pascal"
+    },
+    {
+      "value": "COMTRAN"
+    },
+    {
+      "value": "Constraint Handling Rules"
+    },
+    {
+      "value": "Cool"
+    },
+    {
+      "value": "Coq"
+    },
+    {
+      "value": "Coral 66"
+    },
+    {
+      "value": "CorVision"
+    },
+    {
+      "value": "COWSEL"
+    },
+    {
+      "value": "CPL"
+    },
+    {
+      "value": "Cryptol"
+    },
+    {
+      "value": "Crystal"
+    },
+    {
+      "value": "Csound"
+    },
+    {
+      "value": "CSP"
+    },
+    {
+      "value": "CSS"
+    },
+    {
+      "value": "Cuneiform"
+    },
+    {
+      "value": "Curl"
+    },
+    {
+      "value": "Curry"
+    },
+    {
+      "value": "Cybil"
+    },
+    {
+      "value": "Cyclone"
+    },
+    {
+      "value": "Cython"
+    },
+    {
+      "value": "D"
+    },
+    {
+      "value": "Dart"
+    },
+    {
+      "value": "Darwin"
+    },
+    {
+      "value": "DASL"
+    },
+    {
+      "value": "DataFlex"
+    },
+    {
+      "value": "Datalog"
+    },
+    {
+      "value": "DATATRIEVE"
+    },
+    {
+      "value": "DAX (Data Analysis Expressions)"
+    },
+    {
+      "value": "dBase"
+    },
+    {
+      "value": "dc"
+    },
+    {
+      "value": "DCL"
+    },
+    {
+      "value": "DIBOL"
+    },
+    {
+      "value": "DinkC"
+    },
+    {
+      "value": "Dog"
+    },
+    {
+      "value": "Draco"
+    },
+    {
+      "value": "DRAKON"
+    },
+    {
+      "value": "Dylan"
+    },
+    {
+      "value": "DYNAMO"
+    },
+    {
+      "value": "E"
+    },
+    {
+      "value": "Ease"
+    },
+    {
+      "value": "Easy PL/I"
+    },
+    {
+      "value": "EASYTRIEVE PLUS"
+    },
+    {
+      "value": "eC"
+    },
+    {
+      "value": "ECMAScript"
+    },
+    {
+      "value": "Edinburgh IMP"
+    },
+    {
+      "value": "EGL"
+    },
+    {
+      "value": "Eiffel"
+    },
+    {
+      "value": "ELAN"
+    },
+    {
+      "value": "Elixir"
+    },
+    {
+      "value": "Elm"
+    },
+    {
+      "value": "Emacs Lisp"
+    },
+    {
+      "value": "Emerald"
+    },
+    {
+      "value": "Epigram"
+    },
+    {
+      "value": "EPL (Easy Programming Language)"
+    },
+    {
+      "value": "EPL (Eltron Programming Language)"
+    },
+    {
+      "value": "Erlang"
+    },
+    {
+      "value": "es"
+    },
+    {
+      "value": "Escher"
+    },
+    {
+      "value": "ESPOL"
+    },
+    {
+      "value": "Esterel"
+    },
+    {
+      "value": "Etoys"
+    },
+    {
+      "value": "Euclid"
+    },
+    {
+      "value": "Euler"
+    },
+    {
+      "value": "Euphoria"
+    },
+    {
+      "value": "EusLisp Robot Programming Language"
+    },
+    {
+      "value": "EXEC 2"
+    },
+    {
+      "value": "Executable UML"
+    },
+    {
+      "value": "Ezhil"
+    },
+    {
+      "value": "F"
+    },
+    {
+      "value": "F-Script"
+    },
+    {
+      "value": "F*"
+    },
+    {
+      "value": "F#"
+    },
+    {
+      "value": "Factor"
+    },
+    {
+      "value": "Fantom"
+    },
+    {
+      "value": "FAUST"
+    },
+    {
+      "value": "FFP"
+    },
+    {
+      "value": "Fjölnir"
+    },
+    {
+      "value": "FL"
+    },
+    {
+      "value": "Flavors"
+    },
+    {
+      "value": "Flex"
+    },
+    {
+      "value": "FlooP"
+    },
+    {
+      "value": "FLOW-MATIC"
+    },
+    {
+      "value": "FOCAL"
+    },
+    {
+      "value": "FOCUS"
+    },
+    {
+      "value": "FOIL"
+    },
+    {
+      "value": "FORMAC"
+    },
+    {
+      "value": "Forth"
+    },
+    {
+      "value": "Fortran"
+    },
+    {
+      "value": "Fortress"
+    },
+    {
+      "value": "FP"
+    },
+    {
+      "value": "Franz Lisp"
+    },
+    {
+      "value": "G-code"
+    },
+    {
+      "value": "Game Maker Language"
+    },
+    {
+      "value": "GameMonkey Script"
+    },
+    {
+      "value": "GAMS"
+    },
+    {
+      "value": "GAP"
+    },
+    {
+      "value": "GDL"
+    },
+    {
+      "value": "GDScript"
+    },
+    {
+      "value": "Genie"
+    },
+    {
+      "value": "GEORGE"
+    },
+    {
+      "value": "GLSL"
+    },
+    {
+      "value": "GNU E"
+    },
+    {
+      "value": "Go"
+    },
+    {
+      "value": "Go!"
+    },
+    {
+      "value": "GOAL"
+    },
+    {
+      "value": "Gödel"
+    },
+    {
+      "value": "Golo"
+    },
+    {
+      "value": "GOM (Good Old Mad)"
+    },
+    {
+      "value": "Google Apps Script"
+    },
+    {
+      "value": "Gosu"
+    },
+    {
+      "value": "GOTRAN"
+    },
+    {
+      "value": "GPSS"
+    },
+    {
+      "value": "GraphTalk"
+    },
+    {
+      "value": "GRASS"
+    },
+    {
+      "value": "Grasshopper"
+    },
+    {
+      "value": "Groovy"
+    },
+    {
+      "value": "Hack"
+    },
+    {
+      "value": "HAGGIS"
+    },
+    {
+      "value": "HAL/S"
+    },
+    {
+      "value": "Halide (programming language)"
+    },
+    {
+      "value": "Hamilton C shell"
+    },
+    {
+      "value": "Harbour"
+    },
+    {
+      "value": "Hartmann pipelines"
+    },
+    {
+      "value": "Haskell"
+    },
+    {
+      "value": "Haxe"
+    },
+    {
+      "value": "Hermes"
+    },
+    {
+      "value": "High Level Assembly"
+    },
+    {
+      "value": "HLSL"
+    },
+    {
+      "value": "Hollywood"
+    },
+    {
+      "value": "HolyC"
+    },
+    {
+      "value": "Hop"
+    },
+    {
+      "value": "Hope"
+    },
+    {
+      "value": "Hopscotch"
+    },
+    {
+      "value": "HTML"
+    },
+    {
+      "value": "Hugo"
+    },
+    {
+      "value": "Hume"
+    },
+    {
+      "value": "HyperTalk"
+    },
+    {
+      "value": "IBM Basic assembly language"
+    },
+    {
+      "value": "IBM HAScript"
+    },
+    {
+      "value": "IBM Informix-4GL"
+    },
+    {
+      "value": "IBM RPG"
+    },
+    {
+      "value": "Icon"
+    },
+    {
+      "value": "IDL"
+    },
+    {
+      "value": "Idris"
+    },
+    {
+      "value": "Inform"
+    },
+    {
+      "value": "Io"
+    },
+    {
+      "value": "Irineu"
+    },
+    {
+      "value": "J"
+    },
+    {
+      "value": "J#"
+    },
+    {
+      "value": "J++"
+    },
+    {
+      "value": "JADE"
+    },
+    {
+      "value": "JAL"
+    },
+    {
+      "value": "Janus (concurrent constraint programming language)"
+    },
+    {
+      "value": "Janus (time-reversible computing programming language)"
+    },
+    {
+      "value": "JASS"
+    },
+    {
+      "value": "Java"
+    },
+    {
+      "value": "JavaFX Script"
+    },
+    {
+      "value": "JavaScript"
+    },
+    {
+      "value": "JCL"
+    },
+    {
+      "value": "JEAN"
+    },
+    {
+      "value": "Join Java"
+    },
+    {
+      "value": "JOSS"
+    },
+    {
+      "value": "Joule"
+    },
+    {
+      "value": "JOVIAL"
+    },
+    {
+      "value": "Joy"
+    },
+    {
+      "value": "JScript"
+    },
+    {
+      "value": "JScript .NET"
+    },
+    {
+      "value": "JSON"
+    },
+    {
+      "value": "JSON-LD"
+    },
+    {
+      "value": "Julia"
+    },
+    {
+      "value": "Jython"
+    },
+    {
+      "value": "K"
+    },
+    {
+      "value": "Kaleidoscope"
+    },
+    {
+      "value": "Karel"
+    },
+    {
+      "value": "KEE"
+    },
+    {
+      "value": "KIF"
+    },
+    {
+      "value": "Kixtart"
+    },
+    {
+      "value": "Klerer-May System"
+    },
+    {
+      "value": "Kodu"
+    },
+    {
+      "value": "Kojo"
+    },
+    {
+      "value": "Korn shell (ksh)"
+    },
+    {
+      "value": "Kotlin"
+    },
+    {
+      "value": "KRC"
+    },
+    {
+      "value": "KRL"
+    },
+    {
+      "value": "KRYPTON"
+    },
+    {
+      "value": "ksh"
+    },
+    {
+      "value": "KUKA Robot Language"
+    },
+    {
+      "value": "Kv"
+    },
+    {
+      "value": "LabVIEW"
+    },
+    {
+      "value": "Ladder"
+    },
+    {
+      "value": "LANSA"
+    },
+    {
+      "value": "Lasso"
+    },
+    {
+      "value": "Lava"
+    },
+    {
+      "value": "LC-3"
+    },
+    {
+      "value": "Legoscript"
+    },
+    {
+      "value": "LIL"
+    },
+    {
+      "value": "LilyPond"
+    },
+    {
+      "value": "Limbo"
+    },
+    {
+      "value": "Limnor"
+    },
+    {
+      "value": "LINC"
+    },
+    {
+      "value": "Lingo"
+    },
+    {
+      "value": "LINQ"
+    },
+    {
+      "value": "LIS"
+    },
+    {
+      "value": "LISA"
+    },
+    {
+      "value": "Lisp"
+    },
+    {
+      "value": "Lite-C"
+    },
+    {
+      "value": "Lithe"
+    },
+    {
+      "value": "Little b"
+    },
+    {
+      "value": "LiveCode"
+    },
+    {
+      "value": "LiveScript"
+    },
+    {
+      "value": "LLL"
+    },
+    {
+      "value": "Logo"
+    },
+    {
+      "value": "Logtalk"
+    },
+    {
+      "value": "LotusScript"
+    },
+    {
+      "value": "LPC"
+    },
+    {
+      "value": "LSE"
+    },
+    {
+      "value": "LSL"
+    },
+    {
+      "value": "Lua"
+    },
+    {
+      "value": "Lucid"
+    },
+    {
+      "value": "Lustre"
+    },
+    {
+      "value": "LYaPAS"
+    },
+    {
+      "value": "Lynx"
+    },
+    {
+      "value": "M#"
+    },
+    {
+      "value": "M2001"
+    },
+    {
+      "value": "M4"
+    },
+    {
+      "value": "Machine code"
+    },
+    {
+      "value": "Macsyma"
+    },
+    {
+      "value": "MAD"
+    },
+    {
+      "value": "MAD/I"
+    },
+    {
+      "value": "Magik"
+    },
+    {
+      "value": "Magma"
+    },
+    {
+      "value": "Máni"
+    },
+    {
+      "value": "Maple"
+    },
+    {
+      "value": "MAPPER"
+    },
+    {
+      "value": "MARK-IV"
+    },
+    {
+      "value": "Markdown"
+    },
+    {
+      "value": "Mary"
+    },
+    {
+      "value": "MASM Microsoft Assembly x86"
+    },
+    {
+      "value": "MATH-MATIC"
+    },
+    {
+      "value": "Mathcad"
+    },
+    {
+      "value": "Mathematica"
+    },
+    {
+      "value": "MathML"
+    },
+    {
+      "value": "MATLAB"
+    },
+    {
+      "value": "Maude system"
+    },
+    {
+      "value": "Max"
+    },
+    {
+      "value": "Maxima"
+    },
+    {
+      "value": "MaxScript"
+    },
+    {
+      "value": "Maya (MEL)"
+    },
+    {
+      "value": "MDL"
+    },
+    {
+      "value": "Mercury"
+    },
+    {
+      "value": "Mesa"
+    },
+    {
+      "value": "Metafont"
+    },
+    {
+      "value": "MHEG-5 (Interactive TV programming language)"
+    },
+    {
+      "value": "Microcode"
+    },
+    {
+      "value": "MicroScript"
+    },
+    {
+      "value": "MIIS"
+    },
+    {
+      "value": "Milk (programming language)"
+    },
+    {
+      "value": "MIMIC"
+    },
+    {
+      "value": "Mirah"
+    },
+    {
+      "value": "Miranda"
+    },
+    {
+      "value": "MIVA Script"
+    },
+    {
+      "value": "ML"
+    },
+    {
+      "value": "Model 204"
+    },
+    {
+      "value": "Modelica"
+    },
+    {
+      "value": "Modula"
+    },
+    {
+      "value": "Modula-2"
+    },
+    {
+      "value": "Modula-3"
+    },
+    {
+      "value": "Mohol"
+    },
+    {
+      "value": "MOO"
+    },
+    {
+      "value": "Mortran"
+    },
+    {
+      "value": "Mouse"
+    },
+    {
+      "value": "MPD"
+    },
+    {
+      "value": "MSL"
+    },
+    {
+      "value": "MUMPS"
+    },
+    {
+      "value": "MuPAD"
+    },
+    {
+      "value": "Mutan"
+    },
+    {
+      "value": "Mystic Programming Language"
+    },
+    {
+      "value": "N-Quads"
+    },
+    {
+      "value": "N-Triples"
+    },
+    {
+      "value": "N3"
+    },
+    {
+      "value": "Napier88"
+    },
+    {
+      "value": "NASM"
+    },
+    {
+      "value": "Neko"
+    },
+    {
+      "value": "Nemerle"
+    },
+    {
+      "value": "NESL"
+    },
+    {
+      "value": "Net.Data"
+    },
+    {
+      "value": "NetLogo"
+    },
+    {
+      "value": "NetRexx"
+    },
+    {
+      "value": "NewLISP"
+    },
+    {
+      "value": "NEWP"
+    },
+    {
+      "value": "Newspeak"
+    },
+    {
+      "value": "NewtonScript"
+    },
+    {
+      "value": "Next Generation Shell"
+    },
+    {
+      "value": "Nial"
+    },
+    {
+      "value": "Nice"
+    },
+    {
+      "value": "Nickle"
+    },
+    {
+      "value": "Nim"
+    },
+    {
+      "value": "NITIN"
+    },
+    {
+      "value": "Not eXactly C"
+    },
+    {
+      "value": "Not Quite C"
+    },
+    {
+      "value": "NPL"
+    },
+    {
+      "value": "NSIS"
+    },
+    {
+      "value": "Nu"
+    },
+    {
+      "value": "NWScript"
+    },
+    {
+      "value": "NXT-G"
+    },
+    {
+      "value": "o:XML"
+    },
+    {
+      "value": "Oak"
+    },
+    {
+      "value": "Oberon"
+    },
+    {
+      "value": "OBJ2"
+    },
+    {
+      "value": "Object Lisp"
+    },
+    {
+      "value": "Object Pascal"
+    },
+    {
+      "value": "Object REXX"
+    },
+    {
+      "value": "Objective-C"
+    },
+    {
+      "value": "Objective-J"
+    },
+    {
+      "value": "ObjectLOGO"
+    },
+    {
+      "value": "Obliq"
+    },
+    {
+      "value": "OCaml"
+    },
+    {
+      "value": "occam"
+    },
+    {
+      "value": "occam-π"
+    },
+    {
+      "value": "Octave"
+    },
+    {
+      "value": "OmniMark"
+    },
+    {
+      "value": "Onyx"
+    },
+    {
+      "value": "Opa"
+    },
+    {
+      "value": "Opal"
+    },
+    {
+      "value": "OpenCL"
+    },
+    {
+      "value": "OpenEdge ABL"
+    },
+    {
+      "value": "OpenVera"
+    },
+    {
+      "value": "OPL"
+    },
+    {
+      "value": "OPS5"
+    },
+    {
+      "value": "OptimJ"
+    },
+    {
+      "value": "Orc"
+    },
+    {
+      "value": "ORCA/Modula-2"
+    },
+    {
+      "value": "Oriel"
+    },
+    {
+      "value": "Orwell"
+    },
+    {
+      "value": "Oxygene"
+    },
+    {
+      "value": "Oz"
+    },
+    {
+      "value": "P"
+    },
+    {
+      "value": "P′′"
+    },
+    {
+      "value": "P4"
+    },
+    {
+      "value": "ParaSail (programming language)"
+    },
+    {
+      "value": "PARI/GP"
+    },
+    {
+      "value": "Pascal"
+    },
+    {
+      "value": "Pascal Script"
+    },
+    {
+      "value": "PCASTL"
+    },
+    {
+      "value": "PCF"
+    },
+    {
+      "value": "PDL"
+    },
+    {
+      "value": "PEARL"
+    },
+    {
+      "value": "PeopleCode"
+    },
+    {
+      "value": "Perl"
+    },
+    {
+      "value": "Perl 6"
+    },
+    {
+      "value": "Pharo"
+    },
+    {
+      "value": "PHP"
+    },
+    {
+      "value": "Pico"
+    },
+    {
+      "value": "Picolisp"
+    },
+    {
+      "value": "Pict"
+    },
+    {
+      "value": "Pig (programming tool)"
+    },
+    {
+      "value": "Pike"
+    },
+    {
+      "value": "PILOT"
+    },
+    {
+      "value": "Pinecone"
+    },
+    {
+      "value": "Pipelines"
+    },
+    {
+      "value": "Pizza"
+    },
+    {
+      "value": "PL-11"
+    },
+    {
+      "value": "PL/0"
+    },
+    {
+      "value": "PL/B"
+    },
+    {
+      "value": "PL/C"
+    },
+    {
+      "value": "PL/I"
+    },
+    {
+      "value": "PL/M"
+    },
+    {
+      "value": "PL/P"
+    },
+    {
+      "value": "PL/SQL"
+    },
+    {
+      "value": "PL360"
+    },
+    {
+      "value": "PLANC"
+    },
+    {
+      "value": "Plankalkül"
+    },
+    {
+      "value": "Planner"
+    },
+    {
+      "value": "PLEX"
+    },
+    {
+      "value": "PLEXIL"
+    },
+    {
+      "value": "Plus"
+    },
+    {
+      "value": "POP-11"
+    },
+    {
+      "value": "POP-2"
+    },
+    {
+      "value": "PortablE"
+    },
+    {
+      "value": "PostScript"
+    },
+    {
+      "value": "POV-Ray SDL"
+    },
+    {
+      "value": "PowerBuilder"
+    },
+    {
+      "value": "Powerhouse"
+    },
+    {
+      "value": "PowerShell"
+    },
+    {
+      "value": "PPL"
+    },
+    {
+      "value": "Pro*C"
+    },
+    {
+      "value": "Processing"
+    },
+    {
+      "value": "Processing.js"
+    },
+    {
+      "value": "Prograph"
+    },
+    {
+      "value": "PROIV"
+    },
+    {
+      "value": "Prolog"
+    },
+    {
+      "value": "PROMAL"
+    },
+    {
+      "value": "Promela"
+    },
+    {
+      "value": "PROSE modeling language"
+    },
+    {
+      "value": "PROTEL"
+    },
+    {
+      "value": "ProvideX"
+    },
+    {
+      "value": "Pure"
+    },
+    {
+      "value": "Pure Data"
+    },
+    {
+      "value": "Python"
+    },
+    {
+      "value": "Q (programming language from Kx Systems)"
+    },
+    {
+      "value": "Q# (Microsoft programming language)"
+    },
+    {
+      "value": "Qalb"
+    },
+    {
+      "value": "Qbasic"
+    },
+    {
+      "value": "QPL"
+    },
+    {
+      "value": "QtScript"
+    },
+    {
+      "value": "QuakeC"
+    },
+    {
+      "value": "R"
+    },
+    {
+      "value": "R++"
+    },
+    {
+      "value": "Racket"
+    },
+    {
+      "value": "RAPID"
+    },
+    {
+      "value": "Rapira"
+    },
+    {
+      "value": "Ratfiv"
+    },
+    {
+      "value": "Ratfor"
+    },
+    {
+      "value": "rc"
+    },
+    {
+      "value": "Reason"
+    },
+    {
+      "value": "REBOL"
+    },
+    {
+      "value": "Red"
+    },
+    {
+      "value": "Redcode"
+    },
+    {
+      "value": "REFAL"
+    },
+    {
+      "value": "REXX"
+    },
+    {
+      "value": "Rlab"
+    },
+    {
+      "value": "ROOP"
+    },
+    {
+      "value": "RPG"
+    },
+    {
+      "value": "RPL"
+    },
+    {
+      "value": "RSL"
+    },
+    {
+      "value": "RTL/2"
+    },
+    {
+      "value": "Ruby"
+    },
+    {
+      "value": "RuneScript"
+    },
+    {
+      "value": "Rust"
+    },
+    {
+      "value": "S"
+    },
+    {
+      "value": "S-Lang"
+    },
+    {
+      "value": "S-PLUS"
+    },
+    {
+      "value": "S/SL"
+    },
+    {
+      "value": "S2"
+    },
+    {
+      "value": "S3"
+    },
+    {
+      "value": "SA-C"
+    },
+    {
+      "value": "SabreTalk"
+    },
+    {
+      "value": "SAIL"
+    },
+    {
+      "value": "SAM76"
+    },
+    {
+      "value": "SAS"
+    },
+    {
+      "value": "SASL"
+    },
+    {
+      "value": "Sather"
+    },
+    {
+      "value": "Sawzall"
+    },
+    {
+      "value": "SBL"
+    },
+    {
+      "value": "Scala"
+    },
+    {
+      "value": "Scheme"
+    },
+    {
+      "value": "Scilab"
+    },
+    {
+      "value": "Scratch"
+    },
+    {
+      "value": "Script.NET"
+    },
+    {
+      "value": "Sed"
+    },
+    {
+      "value": "Seed7"
+    },
+    {
+      "value": "Self"
+    },
+    {
+      "value": "SenseTalk"
+    },
+    {
+      "value": "SequenceL"
+    },
+    {
+      "value": "Serpent"
+    },
+    {
+      "value": "SETL"
+    },
+    {
+      "value": "SGML"
+    },
+    {
+      "value": "SIGNAL"
+    },
+    {
+      "value": "SiMPLE"
+    },
+    {
+      "value": "SIMPOL"
+    },
+    {
+      "value": "SIMSCRIPT"
+    },
+    {
+      "value": "Simula"
+    },
+    {
+      "value": "Simulink"
+    },
+    {
+      "value": "Singularity"
+    },
+    {
+      "value": "SISAL"
+    },
+    {
+      "value": "SLIP"
+    },
+    {
+      "value": "SMALL"
+    },
+    {
+      "value": "Smalltalk"
+    },
+    {
+      "value": "SML"
+    },
+    {
+      "value": "Snap!"
+    },
+    {
+      "value": "SNOBOL"
+    },
+    {
+      "value": "Snowball"
+    },
+    {
+      "value": "SOL"
+    },
+    {
+      "value": "Solidity"
+    },
+    {
+      "value": "SOPHAEROS"
+    },
+    {
+      "value": "SP/k"
+    },
+    {
+      "value": "SPARK"
+    },
+    {
+      "value": "Speakeasy"
+    },
+    {
+      "value": "Speedcode"
+    },
+    {
+      "value": "SPIN"
+    },
+    {
+      "value": "SPITBOL"
+    },
+    {
+      "value": "SPS"
+    },
+    {
+      "value": "SQL"
+    },
+    {
+      "value": "SQR"
+    },
+    {
+      "value": "Squeak"
+    },
+    {
+      "value": "Squirrel"
+    },
+    {
+      "value": "SR"
+    },
+    {
+      "value": "Starlogo"
+    },
+    {
+      "value": "Stata"
+    },
+    {
+      "value": "Stateflow"
+    },
+    {
+      "value": "Strand"
+    },
+    {
+      "value": "Strongtalk"
+    },
+    {
+      "value": "Subtext"
+    },
+    {
+      "value": "SuperCollider"
+    },
+    {
+      "value": "SuperTalk"
+    },
+    {
+      "value": "SVG"
+    },
+    {
+      "value": "Swift (Apple programming language)"
+    },
+    {
+      "value": "Swift (parallel scripting language)"
+    },
+    {
+      "value": "SYMPL"
+    },
+    {
+      "value": "SystemVerilog"
+    },
+    {
+      "value": "T"
+    },
+    {
+      "value": "T-SQL"
+    },
+    {
+      "value": "TACL"
+    },
+    {
+      "value": "TACPOL"
+    },
+    {
+      "value": "TADS"
+    },
+    {
+      "value": "TAL"
+    },
+    {
+      "value": "Tcl"
+    },
+    {
+      "value": "Tea"
+    },
+    {
+      "value": "TECO"
+    },
+    {
+      "value": "TELCOMP"
+    },
+    {
+      "value": "TeX"
+    },
+    {
+      "value": "TEX"
+    },
+    {
+      "value": "TIE"
+    },
+    {
+      "value": "TMG"
+    },
+    {
+      "value": "Toi"
+    },
+    {
+      "value": "Tom"
+    },
+    {
+      "value": "TOM"
+    },
+    {
+      "value": "Topspeed"
+    },
+    {
+      "value": "TPU"
+    },
+    {
+      "value": "Trac"
+    },
+    {
+      "value": "Transcript"
+    },
+    {
+      "value": "TTCN"
+    },
+    {
+      "value": "TTM"
+    },
+    {
+      "value": "Turing"
+    },
+    {
+      "value": "Turtle"
+    },
+    {
+      "value": "TUTOR"
+    },
+    {
+      "value": "TXL"
+    },
+    {
+      "value": "Tynker"
+    },
+    {
+      "value": "TypeScript"
+    },
+    {
+      "value": "Ubercode"
+    },
+    {
+      "value": "UCSD Pascal"
+    },
+    {
+      "value": "Umple"
+    },
+    {
+      "value": "Unicon"
+    },
+    {
+      "value": "Uniface"
+    },
+    {
+      "value": "UNITY"
+    },
+    {
+      "value": "Unix shell"
+    },
+    {
+      "value": "UnrealScript"
+    },
+    {
+      "value": "V"
+    },
+    {
+      "value": "Vala"
+    },
+    {
+      "value": "Verilog"
+    },
+    {
+      "value": "VHDL"
+    },
+    {
+      "value": "Vim script"
+    },
+    {
+      "value": "Viper"
+    },
+    {
+      "value": "Visual Basic"
+    },
+    {
+      "value": "Visual Basic .NET"
+    },
+    {
+      "value": "Visual DataFlex"
+    },
+    {
+      "value": "Visual DialogScript"
+    },
+    {
+      "value": "Visual Fortran"
+    },
+    {
+      "value": "Visual FoxPro"
+    },
+    {
+      "value": "Visual J#"
+    },
+    {
+      "value": "Visual J++"
+    },
+    {
+      "value": "Visual LISP"
+    },
+    {
+      "value": "Visual Objects"
+    },
+    {
+      "value": "Visual Prolog"
+    },
+    {
+      "value": "VSXu"
+    },
+    {
+      "value": "WATFIV / WATFOR"
+    },
+    {
+      "value": "WebAssembly"
+    },
+    {
+      "value": "WebDNA"
+    },
+    {
+      "value": "Whiley"
+    },
+    {
+      "value": "Winbatch"
+    },
+    {
+      "value": "Wolfram Language"
+    },
+    {
+      "value": "Wyvern"
+    },
+    {
+      "value": "X++"
+    },
+    {
+      "value": "X10"
+    },
+    {
+      "value": "xBase"
+    },
+    {
+      "value": "xBase++"
+    },
+    {
+      "value": "XBL"
+    },
+    {
+      "value": "XC"
+    },
+    {
+      "value": "xHarbour"
+    },
+    {
+      "value": "XL"
+    },
+    {
+      "value": "XML"
+    },
+    {
+      "value": "XMOS architecture"
+    },
+    {
+      "value": "XOD (programming language)"
+    },
+    {
+      "value": "Xojo"
+    },
+    {
+      "value": "XOTcl"
+    },
+    {
+      "value": "XPath"
+    },
+    {
+      "value": "XPL"
+    },
+    {
+      "value": "XPL0"
+    },
+    {
+      "value": "XQuery"
+    },
+    {
+      "value": "XSB"
+    },
+    {
+      "value": "XSharp"
+    },
+    {
+      "value": "XSLT"
+    },
+    {
+      "value": "Xtend"
+    },
+    {
+      "value": "YAML"
+    },
+    {
+      "value": "Yoix"
+    },
+    {
+      "value": "Yorick"
+    },
+    {
+      "value": "YQL"
+    },
+    {
+      "value": "YUI"
+    },
+    {
+      "value": "Z notation"
+    },
+    {
+      "value": "Z++"
+    },
+    {
+      "value": "Zebra / ZPL / ZPL2"
+    },
+    {
+      "value": "Zeno"
+    },
+    {
+      "value": "ZetaLisp"
+    },
+    {
+      "value": "ZOPL"
+    },
+    {
+      "value": "ZPL"
+    },
+    {
+      "value": "Zsh"
+    }
+  ]
+}
