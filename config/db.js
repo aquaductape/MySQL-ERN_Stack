@@ -1,15 +1,16 @@
 const config = require('config');
 const mysql = require('mysql');
 
-const User = require('../server/models/User');
-const Profile = require('../server/models/Profile');
-const Skills = require('../server/models/Skills');
-const Social = require('../server/models/Social');
-const Experience = require('../server/models/Experience');
-const Education = require('../server/models/Education');
-const Comments = require('../server/models/Comments');
-const Likes = require('../server/models/Likes');
-const Post = require('../server/models/Post');
+const User = require('../server/models/user/User');
+const Account = require('../server/models/user/Account');
+const Profile = require('../server/models/profile/Profile');
+const Skills = require('../server/models/profile/Skills');
+const Social = require('../server/models/profile/Social');
+const Experience = require('../server/models/profile/Experience');
+const Education = require('../server/models/profile/Education');
+const Comments = require('../server/models/post/Comments');
+const Likes = require('../server/models/post/Likes');
+const Post = require('../server/models/post/Post');
 
 const pool = mysql.createPool({
   connectionLimit: 10,
@@ -29,6 +30,7 @@ pool.getConnection((err, connection) => {
   console.log('MySQL connected... 🐬 ');
   // Create tables
   createTable(connection, ...User);
+  // createTable(connection, ...Account);
   createTable(connection, ...Profile);
   createTable(connection, ...Skills);
   createTable(connection, ...Social);
