@@ -20,7 +20,13 @@ const cleanJson = obj => {
 const cleanInput = obj => {
   Object.keys(obj).forEach(key => {
     if (typeof obj[key] === 'object' && obj[key] != null) cleanINput(obj[key]);
-    else obj[key] === undefined && delete obj[key];
+    else {
+      if (typeof obj[key] === 'string') {
+        !obj[key].trim() && delete obj[key];
+      } else {
+        obj[key] === undefined && delete obj[key];
+      }
+    }
   });
 };
 
@@ -33,7 +39,7 @@ router.get('/me', auth, async (req, res, next) => {
 
     const profile = await db.query('SELECT ?? FROM profile WHERE profile.?', [
       select.profile,
-      { user_id },
+      { user_id }
     ]);
 
     if (!profile) {
@@ -42,7 +48,7 @@ router.get('/me', auth, async (req, res, next) => {
         .json(new CustomError('There is no profile for this user'));
     }
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
 
     profile.skills =
@@ -65,7 +71,7 @@ router.get('/me', auth, async (req, res, next) => {
     const social =
       (await db.query('SELECT ?? FROM social WHERE ?', [
         select.social,
-        { user_id },
+        { user_id }
       ])) || {};
 
     profile.education = Array.isArray(education) ? education : [education];
@@ -102,7 +108,7 @@ router.post('/', validate.profile, async (req, res) => {
     facebook,
     twitter,
     instagram,
-    linkedin,
+    linkedin
   } = req.body;
 
   const profileFields = {
@@ -111,7 +117,7 @@ router.post('/', validate.profile, async (req, res) => {
     website,
     location,
     bio,
-    githubusername,
+    githubusername
   };
 
   const social = {
@@ -119,29 +125,32 @@ router.post('/', validate.profile, async (req, res) => {
     facebook,
     twitter,
     instagram,
-    linkedin,
+    linkedin
   };
   cleanInput(social);
+  cleanInput(profileFields);
+  const socialSelect = Object.keys(social);
 
   const user_id = req.user.id;
   profileFields.user_id = user_id;
-  social.user_id = user_id;
 
   try {
     const profileExist = await db.query('SELECT id FROM profile WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
 
     if (profileExist) {
       profileFields.id = profileExist.id;
       statusCode = 200;
     }
-    const newProfile = await db.query(
+    const newProfile = (await db.query(
       'REPLACE INTO profile SET ?; SELECT ?? FROM profile WHERE ?',
       [profileFields, select.profile, { user_id }]
-    );
+    ))[0];
 
-    const skillsArr = skills.split(/\,\s*/).filter(skill => skill);
+    const skillsArr = Array.isArray(skills)
+      ? skills
+      : skills.split(/\,\s*/).filter(skill => skill);
 
     // delete all user's skills
     await db.query('DELETE FROM skills WHERE ?', [{ user_id }]);
@@ -151,7 +160,7 @@ router.post('/', validate.profile, async (req, res) => {
     }
 
     resultSkills = await db.query('SELECT skill FROM skills WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
 
     newProfile.skills = Array.isArray(resultSkills)
@@ -159,16 +168,19 @@ router.post('/', validate.profile, async (req, res) => {
       : [resultSkills.skill];
 
     const socialExist = await db.query('SELECT id FROM social WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
-    if (socialExist) {
-      social.id = socialExist.id;
-    }
 
-    newProfile.social = await db.query(
-      'REPLACE INTO social SET ?; SELECT ?? FROM social WHERE ?',
-      [social, select.social, { user_id }]
-    );
+    if (socialSelect.length) {
+      social.user_id = user_id;
+      if (socialExist) {
+        social.id = socialExist.id;
+      }
+      newProfile.social = await db.query(
+        'REPLACE INTO social SET ?; SELECT ?? FROM social WHERE ?',
+        [social, socialSelect, { user_id }]
+      );
+    }
 
     newProfile.social = newProfile.social || {};
 
@@ -249,7 +261,7 @@ router.get('/user/:user_id', async (req, res) => {
     const user_id = req.params.user_id;
     const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
       select.profile,
-      { user_id },
+      { user_id }
     ]);
 
     if (!profile) {
@@ -257,14 +269,14 @@ router.get('/user/:user_id', async (req, res) => {
     }
 
     const user = await db.query('SELECT id, name, avatar FROM users WHERE ?', [
-      { id: user_id },
+      { id: user_id }
     ]);
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
     const social = await db.query('SELECT ?? FROM social WHERE ?', [
       select.social,
-      { user_id },
+      { user_id }
     ]);
 
     profile.social = social;
@@ -318,7 +330,7 @@ router.put('/experience', validate.experience, async (req, res, next) => {
     date_from,
     date_to,
     current,
-    description,
+    description
   } = req.body;
 
   const experienceFields = {
@@ -328,7 +340,7 @@ router.put('/experience', validate.experience, async (req, res, next) => {
     date_from,
     date_to,
     current,
-    description,
+    description
   };
 
   cleanInput(experienceFields);
@@ -339,7 +351,7 @@ router.put('/experience', validate.experience, async (req, res, next) => {
   try {
     const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
       select.profile,
-      { user_id },
+      { user_id }
     ]);
 
     if (!profile) {
@@ -352,11 +364,11 @@ router.put('/experience', validate.experience, async (req, res, next) => {
     );
 
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
     const social = await db.query('SELECT ?? FROM social WHERE ?', [
       select.social,
-      { user_id },
+      { user_id }
     ]);
 
     profile.social = social;
@@ -388,7 +400,7 @@ router.delete('/experience/:exp_id', auth, async (req, res, next) => {
   try {
     await db.query('DELETE FROM experience WHERE ? AND ?', [
       { id: exp_id },
-      { user_id },
+      { user_id }
     ]);
 
     return res.status(200).json({ msg: 'Experience removed' });
@@ -415,7 +427,7 @@ router.put('/education', validate.education, async (req, res, next) => {
     date_from,
     date_to,
     current,
-    description,
+    description
   } = req.body;
 
   const educationFields = {
@@ -425,7 +437,7 @@ router.put('/education', validate.education, async (req, res, next) => {
     date_from,
     date_to,
     current,
-    description,
+    description
   };
 
   cleanInput(educationFields);
@@ -437,7 +449,7 @@ router.put('/education', validate.education, async (req, res, next) => {
   try {
     const profile = await db.query('SELECT ?? FROM profile WHERE ?', [
       select.profile,
-      { user_id },
+      { user_id }
     ]);
 
     if (!profile) {
@@ -450,11 +462,11 @@ router.put('/education', validate.education, async (req, res, next) => {
     );
 
     const skills = await db.query('SELECT skill FROM skills WHERE ?', [
-      { user_id },
+      { user_id }
     ]);
     const social = await db.query('SELECT ?? FROM social WHERE ?', [
       select.social,
-      { user_id },
+      { user_id }
     ]);
 
     profile.social = social;
@@ -480,7 +492,7 @@ router.delete('/education/:edu_id', auth, async (req, res, next) => {
   try {
     await db.query('DELETE FROM education WHERE ? AND ?', [
       { id: edu_id },
-      { user_id },
+      { user_id }
     ]);
 
     return res.status(200).json({ msg: 'Education removed' });
@@ -502,7 +514,7 @@ router.get('/github/:username', async (req, res, next) => {
         'github.clientId'
       )}&client_secret=${config.get('github.secret')}`,
       method: 'GET',
-      headers: { 'user-agent': 'node.js' },
+      headers: { 'user-agent': 'node.js' }
     };
 
     request(options, (err, response, body) => {
